@@ -5,6 +5,30 @@ import Loading from "./Loading";
 import Error from "./Error";
 import NoResults from "./NoResults";
 
+import styled from "styled-components";
+
+const Container = styled.div`
+  text-align: center;
+`;
+
+const Text = styled.p`
+  font-size: 1.2em;
+`;
+
+const Input = styled.input`
+  font-size: 1em;
+  padding: 0.4em;
+  margin: 25px auto;
+  display: inline-block;
+`;
+
+const Button = styled.button`
+  font-size: 1em;
+  padding: 0.5em;
+  margin: 25px auto;
+  display: inline-block;
+`;
+
 class Main extends Component {
   state = {
     input: "",
@@ -36,14 +60,17 @@ class Main extends Component {
     if (isLoading) return <Loading />;
     if (!booksList) return <NoResults />;
     return (
-      <div className="main">
-        <input
+      <Container className="main">
+        <Text>Enter a book you like to find recommendations</Text>
+        <Input
           value={this.state.input}
           onChange={e => this.setState({ input: e.target.value })}
         />
-        <button onClick={() => this.getBooks()}>Get Books</button>
+        <Button onClick={this.state.input ? () => this.getBooks() : null}>
+          Get Books
+        </Button>
         <BooksList booksList={booksList} />
-      </div>
+      </Container>
     );
   }
 }
