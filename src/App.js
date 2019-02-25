@@ -1,11 +1,20 @@
 import React from "react";
 import Main from "./Components/Main";
-import "./App.css";
+import styled from "styled-components";
+
+const Header = styled.h1`
+  color: goldenrod;
+  font-size: 2.8em;
+  margin: 25px auto;
+  border-bottom: 1px solid goldenrod;
+  display: block;
+  text-align: center;
+`;
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">Find a book, any book</header>
+      <Header className="App-header">Find a book, any book</Header>
       <Main />
     </div>
   );
